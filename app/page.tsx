@@ -148,8 +148,13 @@ export default function Home() {
 
   return (
     <div className='w-full h-full absolute inset-0 flex justify-center sm:max-w-[375px] sm:max-h-[667px] sm:shadow-pcbox sm:overflow-hidden sm:m-auto flex-col items-center"'>
-      <video ref={videoRef} autoPlay playsInline></video>
-      <canvas ref={canvasRef} className="absolute" />
+      <video
+        ref={videoRef}
+        autoPlay
+        playsInline
+        className="w-full h-full"
+      ></video>
+      <canvas ref={canvasRef} className="absolute w-full h-full" />
       <div className="absolute top-0 left-0 p-4 text-orange-600 font-semibold text-xl">
         <h2>EyeAspectRatio: {eyeAspectRatio.toFixed(4)}</h2>
         <h2>MouthAspectRatio: {mouthAspectRatio.toFixed(4)}</h2>
