@@ -16,6 +16,7 @@ import {
   calculateMouthAspectRatio,
 } from '@/utils/calculations'
 import { LoadingSpinner } from '@/components/loading'
+import eruda from 'eruda'
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -45,9 +46,11 @@ export default function Home() {
 
     const videoConstraints: MediaTrackConstraints = {
       facingMode: 'user',
-      width: videoWidth,
-      height: videoHeight,
+      width: { ideal: videoWidth },
+      height: { ideal: videoHeight },
     }
+
+    eruda.init()
 
     const init = async () => {
       try {
@@ -145,7 +148,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className='w-full absolute inset-0 flex justify-center sm:max-w-[375px] sm:max-h-[667px] sm:shadow-pcbox sm:overflow-hidden sm:m-auto flex-col items-center"'>
+    <div className='w-full h-full absolute inset-0 flex justify-center sm:max-w-[375px] sm:max-h-[667px] sm:shadow-pcbox sm:overflow-hidden sm:m-auto flex-col items-center"'>
       <video ref={videoRef} autoPlay playsInline></video>
       <canvas ref={canvasRef} className="absolute" />
       <div className="absolute top-0 left-0 p-4 text-orange-600 font-semibold text-xl">
