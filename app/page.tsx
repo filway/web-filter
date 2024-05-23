@@ -16,7 +16,6 @@ import {
   calculateMouthAspectRatio,
 } from '@/utils/calculations'
 import { LoadingSpinner } from '@/components/loading'
-import eruda from 'eruda'
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -50,7 +49,7 @@ export default function Home() {
       height: { ideal: videoHeight },
     }
 
-    eruda.init()
+    import('eruda').then((eruda) => eruda.default.init())
 
     const init = async () => {
       try {
